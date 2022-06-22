@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class pointer{
+	public:
+		void input();
+		void proses();
+		void output();
+	private:
+		int *nim;
+    	int NIM[5];
+    	string *nama;
+    	string NAMA[5];
+}mhs;
+
+void pointer::input(){
+	cout << "Masukkan Data Mahasiswa Berhasil Masuk"<<endl;
+	cout <<"Babak Final Lomba Parmatika"<<endl<<endl;
+    for (int i=0; i<5; i++){
+		cout << "Masukkan NIM Finalis : ";
+    	cin >> NIM[i];
+    	cout << "Masukkan Nama Finalis : ";
+		cin >> NAMA[i];
+    }
+}
+
+void pointer::proses(){
+	cout << "\n=============================";
+	cout << "\nMenyimpan data ke alamat \n";
+	cout << "=============================\n";
+	nim = new int[5];
+	nama = new string[5];
+    for(int i=0; i<5; i++){
+    	*nim = NIM[i];
+    	nim += 1;
+    	*nama = NAMA[i];
+    	nama+=1;
+    }
+}
+
+void pointer::output(){
+	nim -=5 ;
+    nama -= 5;
+    cout<<"Menampilkan data mahasiswa "<<endl;
+    for (int i=0; i<5; i++) {
+    	cout << "\nNama ke-" << i+1 << " : ";
+    	cout << *nama ;
+    	nama += 1;
+    	cout << "\nNim : " ;
+    	cout << *nim ;
+    	nim += 1;
+    }
+}
+
+int main(){
+	mhs;
+	mhs.input();
+	mhs.proses();
+	mhs.output();
+	return 0;
+}
